@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Linking } from 'react-native';
 
 // import components
 import Card from './Card';
 import CardSection from './CardSection';
+import Button from './Button';
 
 // define this to be a functional component because this component only displays data
 const AlbumDetail = ( {album} ) => {
-    const { title, artist, thumbnail_image, image } = album;
+    const { title, artist, thumbnail_image, image, url } = album;
     const { 
         headerContentStyle, 
         headerTextStyle, 
@@ -29,6 +30,9 @@ const AlbumDetail = ( {album} ) => {
             </CardSection>
             <CardSection>
                 <Image style={imageStyle} source={{ uri: image }} />
+            </CardSection>
+            <CardSection>
+                <Button onPress={()=>Linking.openURL(url)}>Buy Album</Button>
             </CardSection>
         </Card>
     );
